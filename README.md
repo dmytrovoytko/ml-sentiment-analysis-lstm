@@ -120,12 +120,55 @@ When you see these messages app is ready
 
 The dataset is small enough. By default, only 2 fast ML models are enabled in training script (LogisticRegression and MultinomialNB), so it should finish quickly - a minute. If you want to enable training LSTM just uncomment corresponding line, and be ready to wait much longer.
 
+![Training classification models in dockerl](/screenshots/model-training-0.png)
 
-
-![Training prediction models in dockerl](/screenshots/model-training-1.png)
+![Training classification models in dockerl](/screenshots/model-training-1.png)
 
 As a result you will see log similar to [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt).
 
-![Training prediction models in dockerl](/screenshots/model-training-2.png)
+![Training classification models in dockerl](/screenshots/model-training-2.png)
+
+
+### :mag_right: Test prediction service
+
+1. **Run `bash test-api.sh` to execute test calls to prediction web service**. If you run it locally, execute `python test-api.py`. 
+
+![Testing prediction service in dockerl](/screenshots/prediction-service-test-1.png)
+
+
+### :inbox_tray: Deployment
+
+As application is fully containerized, it can be deployed on any virtual machine (AWS, Azure, GCP).
+
+- [docker-compose.yaml](/prediction_service/docker-compose.yaml)
+- [Dockerfile](/prediction_service/Dockerfile)
+- [app.py](/prediction_service/app.py) - FastAPI web app which loads best model and processes received data to classify text. By default it serves on port 5555. You can change it in `settings.py` and `Dockerfile`.
+
+If you want to develop the project, pay attention to `settings.py`, it contains key parameters.
+
+I deployed this service on [huggingface](https://dmytrovoytko-ml-sentiment-analysis.hf.space/) via Huggingface docker space.
+It is live, you can test it executing `python test-api.py --deployed` - just target URL changed comparing to default execution of `test-api.py` mentioned above. It is possible that service is "sleeping" at the moment of your testing, so please go to [Ml Sentiment Analysis space](https://huggingface.co/spaces/dmytrovoytko/ml-sentiment-analysis) and activate it.
+
+![Huggingface space status](/screenshots/huggingface-4.png)
+
+![Testing prediction service on cloud deploymentl](/screenshots/prediction-service-test-2.png)
+
+To deploy dockerized app on Huggingface you need to
+
+1. Create account (free)
+2. Create space with type Docker
+3. Upload content of directory `prediction_service`
+4. Update docker space README.md to assign application port: just add such line with your port number `app_port: 5555`
+
+![Huggingface settingsl](/screenshots/huggingface-0.png)
+
+5. Wait till app is built and started
+6. Use specific URL for your application using template: `https://{username}-{space-name}.hf.space/` (without port!). So for prediction service it will be with `/predict/` at the end - this (https://dmytrovoytko-ml-sentiment-analysis.hf.space//predict), which is used in `test-api.py`
+7. Finally test prediction service using `python test-api.py --deployed` (screenshot below shows server logs of testing requests)
+
+![Huggingface deployment logl](/screenshots/huggingface-2.png)
+
+
+
 
 
