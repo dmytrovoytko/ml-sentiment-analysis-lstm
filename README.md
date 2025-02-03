@@ -45,6 +45,52 @@ I combined all records into one table and then split into [train](/data/subjecti
 
 ## 📊 EDA
 
-Dataset is well prepared, without duplicates and null values.
+Dataset is well prepared, without duplicates and null values, balanced.
 You can explore detailed information in [Jupyter notebook](/sentiment-analysis-subjectivity.ipynb)
+
+For Natural language processing (NLP) classification helpful visual tool is word cloud:
+
+- word cloud for full dataset is presented on title picture
+- objective 
+![Objective](/EDA/word-cloud-Objective.png)
+
+- subjective
+![Subjective](/EDA/word-cloud-Subjective.png)
+
+
+
+## 🎛 Model training
+
+I started with Keras LSTM model for classification, 
+then tried several sklearn ML models:
+
+- MultinomialNB (fast)
+- LogisticRegression (fast)
+- DecisionTreeClassifier (fast)
+- RandomForestClassifier (slow)
+- AdaBoostClassifier (slow)
+
+Also I experimented with hyperparameter tuning to improve performance.
+
+**Comparison of performance** for models trained with hyperparameter tuning:
+
+![Models comparison1](/EDA/models_comparison1.png)
+
+
+## Python scripts for data pre-processing and training
+
+- [preprocess.py](/prediction_service/preprocess.py)
+- [train_model.py](/prediction_service/train_model.py)
+
+`train_model.py` includes a more advanced hyperparameter tuning for all models (including LSTM).
+I used GridSearchCV and measured time for training each ML classifier, and Kerastuner Hyperband for LSTM.
+You can find results in [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt)
+
+
+## 🚀 Instructions to reproduce
+
+- [Setup environment](#hammer_and_wrench-setup-environment)
+- [Train model](#arrow_forward-train-model)
+- [Test prediction service](#mag_right-test-prediction-service)
+- [Deployment](#inbox_tray-deployment)
 
