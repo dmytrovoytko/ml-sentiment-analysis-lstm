@@ -30,6 +30,21 @@ This is my 2nd project in [Machine Learning ZoomCamp](https://github.com/DataTal
 
 ## 🔢 Dataset
 
-[Subjectivity dataset v1.0 from Movie Review Data](https://www.cs.cornell.edu/people/pabo/movie-review-data/) includes 5000 subjective and 5000 objective processed sentences. Dataset ntroduced in Pang/Lee ACL.
-I combined all records into one table and then split into [train](/data/subjectivity_train.csv) and [test](/data/subjectivity_test.csv) (20%) CSV files includes, resulting 8000 and 2000 records with 2 columns - `text` and `sentiment`.
+[Subjectivity dataset v1.0 from Movie Review Data](https://www.cs.cornell.edu/people/pabo/movie-review-data/) includes 5000 subjective and 5000 objective processed sentences. Dataset introduced in Pang/Lee ACL.
+
+- rotten_imdb.tar.gz: contains readme and two data files that were used in the experiments described in Pang/Lee ACL 2004.
+
+Specifically: 
+  * quote.tok.gt9.5000 contains 5000 subjective sentences (or snippets);
+  * plot.tok.gt9.5000 contains 5000 objective sentences.
+
+> Each line in these two files corresponds to a single sentence or snippet; all sentences (or snippets) are down-cased.  Only sentences or snippets containing at least 10 tokens were included. The sentences and snippets were labeled automatically: authors assumed that all snippets from the Rotten Tomatoes pages are subjective, and all sentences from IMDb plot summaries are objective. This is mostly true; but plot summaries can occasionally contain subjective sentences that are mis-labeled as objective.
+
+I combined all records into one table and then split into [train](/data/subjectivity_train.csv) and [test](/data/subjectivity_test.csv) (20%) CSV files, resulting 8000 and 2000 records with 2 columns - `text` and `sentiment`.
+
+
+## 📊 EDA
+
+Dataset is well prepared, without duplicates and null values.
+You can explore detailed information in [Jupyter notebook](/sentiment-analysis-subjectivity.ipynb)
 
