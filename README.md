@@ -40,7 +40,7 @@ Specifically:
 
 > Each line in these two files corresponds to a single sentence or snippet; all sentences (or snippets) are down-cased.  Only sentences or snippets containing at least 10 tokens were included. The sentences and snippets were labeled automatically: authors assumed that all snippets from the Rotten Tomatoes pages are subjective, and all sentences from IMDb plot summaries are objective. This is mostly true; but plot summaries can occasionally contain subjective sentences that are mis-labeled as objective.
 
-I combined all records into one table and then split into [train](/data/subjectivity_train.csv) and [test](/data/subjectivity_test.csv) (20%) CSV files, resulting 8000 and 2000 records with 2 columns - `text` and `sentiment`.
+I combined all records into one table and then split into [train](/data/subjectivity_train.csv) and [test](/data/subjectivity_test.csv) (20%) CSV files, resulting 8000 and 2000 records with 2 columns - `text` and `sentiment`. Data preparation script [prepare_csv.py](/data/prepare_csv.py)
 
 
 ## 📊 EDA
