@@ -160,7 +160,7 @@ To deploy dockerized app on Huggingface you need to
 3. Upload content of directory `prediction_service`
 4. Update docker space README.md to assign application port: just add such line with your port number `app_port: 5555`
 
-![Huggingface settingsl](/screenshots/huggingface-0.png)
+![Huggingface settingsl](/screenshots/huggingface-1.png)
 
 5. Wait till app is built and started
 6. Use specific URL for your application using template: `https://{username}-{space-name}.hf.space/` (without port!). So for prediction service it will be with `/predict/` at the end - this (https://dmytrovoytko-ml-sentiment-analysis.hf.space//predict), which is used in `test-api.py`
