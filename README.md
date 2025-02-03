@@ -51,10 +51,12 @@ You can explore detailed information in [Jupyter notebook](/sentiment-analysis-s
 For Natural language processing (NLP) classification helpful visual tool is word cloud:
 
 - word cloud for full dataset is presented on title picture
-- objective 
+- objective
+
 ![Objective](/EDA/word-cloud-Objective.png)
 
 - subjective
+
 ![Subjective](/EDA/word-cloud-Subjective.png)
 
 
@@ -72,7 +74,7 @@ then tried several sklearn ML models:
 
 Also I experimented with hyperparameter tuning to improve performance.
 
-**Comparison of performance** for models trained with hyperparameter tuning:
+**Comparison of performance** for better performing models trained with hyperparameter tuning:
 
 ![Models comparison1](/EDA/models_comparison1.png)
 
@@ -84,7 +86,7 @@ Also I experimented with hyperparameter tuning to improve performance.
 
 `train_model.py` includes a more advanced hyperparameter tuning for all models (including LSTM).
 I used GridSearchCV and measured time for training each ML classifier, and Kerastuner Hyperband for LSTM.
-You can find results in [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt)
+You can find results in [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt).
 
 
 ## 🚀 Instructions to reproduce
@@ -93,4 +95,37 @@ You can find results in [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt)
 - [Train model](#arrow_forward-train-model)
 - [Test prediction service](#mag_right-test-prediction-service)
 - [Deployment](#inbox_tray-deployment)
+
+### :hammer_and_wrench: Setup environment
+
+1. **Fork this repo on GitHub**. Or use `git clone https://github.com/dmytrovoytko/ml-sentiment-analysis-lstm.git` command to clone it locally, then `cd ml-sentiment-analysis-lstm`.
+2. Create GitHub CodeSpace from the repo.
+3. **Start CodeSpace**
+4. **Go to the prediction service directory** `prediction_service`
+5. The app works in docker container, **you don't need to install packages locally to test it**.
+6. Only if you want to develop the project locally, you can run `pip install -r requirements.txt` (project tested on python 3.11/3.12).
+7. If you want to rerun [Jupyter notebook](/churn-prediction-3.ipynb) you will probably need to install packages using `pip install -r requirements.txt` which contains all required libraries with their tested together versions.
+
+### :arrow_forward: Train model
+
+1. **Run `bash deploy.sh` to build and start app container**. As packages include TensorFlow/Keras, building container takes some time. When new log messages will stop appearing, press enter to return to a command line (service will keep running in background).
+
+![docker-compose up](/screenshots/docker-compose-00.png)
+
+When you see these messages app is ready
+
+![docker-compose up](/screenshots/docker-compose-01.png)
+
+2. To reproduce training process run `bash train.sh` which starts model training in docker container. If you run it locally, execute `python train_model.py`. 
+
+The dataset is small enough. By default, only 2 fast ML models are enabled in training script (LogisticRegression and MultinomialNB), so it should finish quickly - a minute. If you want to enable training LSTM just uncomment corresponding line, and be ready to wait much longer.
+
+
+
+![Training prediction models in dockerl](/screenshots/model-training-1.png)
+
+As a result you will see log similar to [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt).
+
+![Training prediction models in dockerl](/screenshots/model-training-2.png)
+
 
