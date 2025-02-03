@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     if len(sys.argv)>1 and sys.argv[1]=='--deployed':
         # Testing deployed service on huggingface
-        api_url = f'https://dmytrovoytko-ml-churn-prediction.hf.space/'
+        api_url = f'https://dmytrovoytko-ml-sentiment-analysis.hf.space/'
     else:
         api_url = f'http://localhost:{PORT}/'
 
