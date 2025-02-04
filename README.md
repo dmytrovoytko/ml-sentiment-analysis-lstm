@@ -46,7 +46,7 @@ I combined all records into one table and then split into [train](/data/subjecti
 ## 📊 EDA
 
 Dataset is well prepared, without duplicates and with only few null values, well balanced.
-You can explore detailed information in [Jupyter notebook](/sentiment-analysis-subjectivity.ipynb)
+You can explore detailed information in [Jupyter notebook](/sentiment_analysis_subjectivity_lstm.ipynb)
 
 For Natural language processing (NLP) classification a helpful visual tool is Word Cloud:
 
@@ -104,7 +104,7 @@ You can find results in [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt).
 4. **Go to the prediction service directory** `prediction_service`
 5. The app works in docker container, **you don't need to install packages locally to test it**.
 6. Only if you want to develop the project locally, you can run `pip install -r requirements.txt` (project tested on python 3.11/3.12).
-7. If you want to rerun [Jupyter notebook](/churn-prediction-3.ipynb) you will probably need to install packages using `pip install -r requirements.txt` which contains all required libraries with their tested together versions.
+7. If you want to rerun [Jupyter notebook](/sentiment_analysis_subjectivity_lstm.ipynb) you will probably need to install packages using `pip install -r requirements.txt` which contains all required libraries with their tested together versions.
 
 ### :arrow_forward: Train model
 
