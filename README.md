@@ -187,6 +187,19 @@ Run `docker compose down` in command line to stop all running services.
 Don't forget to remove downloaded images if you experimented with project locally! Use `docker images` to list all images and then `docker image rm ...` to remove those you don't need anymore.
 
 
+## Next steps
+
+Actually I was developing the code to process different text datasets for sentimental analysis - to classify Positive-Negative / Positive-Neutral-Negative sentiments. One of the datasets is also from [Movie Review Data](https://www.cs.cornell.edu/people/pabo/movie-review-data/), others - from twitter. 
+
+- LogisticRegression and MultinomialNB show best performance, LSTM needs better tuning. 
+- While LSTM provides a bit better performance, LogisticRegression and MultinomialNB models are MUCH faster and "lighter" - smaller packages, so training and deploying them is way easier.
+- Metrics for 2 classes are higher than for 3 classes (quite predictable, right?).
+
+I plan to analyze Positive-Negative and Objective-Subjective together, I think it would be interesting!
+
+Stay tuned!
+
+
 ## Support
 
 🙏 Thank you for your attention and time!
