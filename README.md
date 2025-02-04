@@ -60,6 +60,15 @@ For Natural language processing (NLP) classification a helpful visual tool is Wo
 ![Subjective](/EDA/word-cloud-Subjective.png)
 
 
+## :toolbox: Tech stack
+
+- Python 3.11/3.12
+- Sklearn and TensorFlow/Keras
+- Jupyter notebook and Matplotlib for analysis and charts
+- FastAPI app for model serving
+- Docker and docker-compose for containerization
+- Huggingface for online deployment
+
 
 ## 🎛 Model training
 
@@ -84,7 +93,7 @@ Also I experimented with hyperparameter tuning to improve performance.
 - [preprocess.py](/prediction_service/preprocess.py)
 - [train_model.py](/prediction_service/train_model.py)
 
-`train_model.py` includes a more advanced hyperparameter tuning for all models (including LSTM).
+`train_model.py` includes an advanced hyperparameter tuning for all models (including LSTM).
 I used GridSearchCV and measured time for training each ML classifier, and Kerastuner Hyperband for LSTM.
 You can find results in [sklearn_lstm-subj.txt](/sklearn_lstm-subj.txt).
 
