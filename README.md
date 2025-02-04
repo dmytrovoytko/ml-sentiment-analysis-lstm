@@ -118,7 +118,7 @@ When you see these messages app is ready
 
 2. To reproduce training process run `bash train.sh` which starts model training in docker container. If you run it locally, execute `python train_model.py`. 
 
-The dataset is small enough. By default, only 2 fast ML models are enabled in training script (LogisticRegression and MultinomialNB), so it should finish quickly - a minute. If you want to enable training LSTM just uncomment corresponding line, and be ready to wait much longer.
+The dataset is small enough. By default, only 2 fast ML models are enabled in training script (LogisticRegression and MultinomialNB), so it should finish quickly - in a minute or so. If you want to enable training LSTM just uncomment corresponding line, and be ready to wait much longer.
 
 ![Training classification models in dockerl](/screenshots/model-training-0.png)
 
