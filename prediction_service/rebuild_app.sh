@@ -10,6 +10,6 @@ echo
 docker compose build 
 
 echo
-echo '3. STARTING APP DOCKER: prediction app available on port 8501'
+echo '3. STARTING APP DOCKER: prediction app available on port 5555'
 echo
 docker compose up &
