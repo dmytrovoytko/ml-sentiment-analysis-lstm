@@ -49,7 +49,7 @@ from predict import evaluate_results, predict_test, Predictor
 
 from settings import DEBUG, DATA_DIR, MODEL_DIR, MODEL_NAME, CLASSES_NUM # isort:skip
 from settings import DATA_FILE, TEST_FILE, TARGET, TEXT_COLUMN, MAX_LEN, PATIENCE
-DEBUG = True # True # False # override global settings
+DEBUG = False # True # False # override global settings
 
 SAVE_MODEL = True # False # True
 
