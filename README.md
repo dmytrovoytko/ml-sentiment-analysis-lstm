@@ -45,17 +45,17 @@ I combined all records into one table and then split into [train](/data/subjecti
 
 ## 📊 EDA
 
-Dataset is well prepared, without duplicates and null values, balanced.
+Dataset is well prepared, without duplicates and with only few null values, well balanced.
 You can explore detailed information in [Jupyter notebook](/sentiment-analysis-subjectivity.ipynb)
 
-For Natural language processing (NLP) classification helpful visual tool is word cloud:
+For Natural language processing (NLP) classification a helpful visual tool is Word Cloud:
 
 - word cloud for full dataset is presented on title picture
-- objective
+- objective:
 
 ![Objective](/EDA/word-cloud-Objective.png)
 
-- subjective
+- subjective:
 
 ![Subjective](/EDA/word-cloud-Subjective.png)
 
@@ -135,6 +135,7 @@ As a result you will see log similar to [sklearn_lstm-subj.txt](/sklearn_lstm-su
 
 ![Testing prediction service in dockerl](/screenshots/prediction-service-test-1.png)
 
+Results of prediction: 0 - objective, 1 - subjective (as we want to detect subjectivity).
 
 ### :inbox_tray: Deployment
 
@@ -162,7 +163,7 @@ To deploy dockerized app on Huggingface you need to
 
 ![Huggingface settingsl](/screenshots/huggingface-1.png)
 
-5. Wait till app is built and started
+5. Wait till your new app (container) is built and started
 6. Use specific URL for your application using template: `https://{username}-{space-name}.hf.space/` (without port!). So for prediction service it will be with `/predict/` at the end - this (https://dmytrovoytko-ml-sentiment-analysis.hf.space//predict), which is used in `test-api.py`
 7. Finally test prediction service using `python test-api.py --deployed` (screenshot below shows server logs of testing requests)
 
