@@ -77,11 +77,13 @@ def decontract(phrase):
     phrase = re.sub(r"\'re", " are", phrase)
     phrase = re.sub(r"let\'s", "let us", phrase)
     phrase = re.sub(r"t\'s", "t is", phrase) # it's that's
+    phrase = re.sub(r"t\`s", "t is", phrase) # it's that's
     phrase = re.sub(r"\'d", " would", phrase)
     phrase = re.sub(r"\'ll", " will", phrase)
     phrase = re.sub(r"\'t", " not", phrase)
     phrase = re.sub(r"\'ve", " have", phrase)
     phrase = re.sub(r"\'m", " am", phrase)
+    phrase = re.sub(r"\`m", " am", phrase)
 
     phrase = re.sub(r"1st", "first", phrase)
     phrase = re.sub(r"2nd", "second", phrase)
@@ -101,6 +103,7 @@ def preprocess_text(text):
 
     text = decontract(text)
 
+    # for twitter 
     text = re.sub(REGX_USERNAME, ' ', text)
     text = re.sub(REGX_URL, ' ', text)
     text = re.sub(REGX_ASCII, ' ', text)
@@ -182,6 +185,8 @@ def preprocess_df(data, verbose=DEBUG):
             # data.loc[data[target] == 'TRUE', target] = 1
             data.loc[data[target] == 'Negative', target] = 0
             data.loc[data[target] == 'Positive', target] = 1
+            data.loc[data[target] == 'negative', target] = 0
+            data.loc[data[target] == 'positive', target] = 1
             data.loc[data[target] == 'Negative emotion', target] = 0
             data.loc[data[target] == 'Positive emotion', target] = 1
             data.loc[data[target] == 'Objective', target] = 0
@@ -191,6 +196,9 @@ def preprocess_df(data, verbose=DEBUG):
             data.loc[data[target] == 'Negative', target] = 0
             data.loc[data[target] == 'Neutral', target] = 1
             data.loc[data[target] == 'Positive', target] = 2
+            data.loc[data[target] == 'negative', target] = 0
+            data.loc[data[target] == 'neutral', target] = 1
+            data.loc[data[target] == 'positive', target] = 2
 
             data.loc[data[target] == 'Negative emotion', target] = 0
             data.loc[data[target] == 'No emotion toward brand or product', target] = 1
