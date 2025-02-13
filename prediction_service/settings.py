@@ -41,6 +41,29 @@ TEST_FILE = {
 	'LABELS': {0:'Objective', 1:'Subjective'}
 }
 
+DATA_FILE2 = {
+	'FILE_NAME': 'twitter_training.csv',
+	'ENCODING': "UTF-8",
+	'SOURCE_TEXT_COLUMN': "text",
+	'SOURCE_TARGET': "sentiment",  # labels column, should be lowercased, space -> '_'
+	'LABELS': {0:'Negative', 1:'Neutral', 2:'Positive'}
+}
+
+TEST_FILE2 = {
+	'FILE_NAME': 'twitter_validation.csv',
+	'ENCODING': "UTF-8",
+	'SOURCE_TEXT_COLUMN': "text",
+	'SOURCE_TARGET': "sentiment",  # labels column, should be lowercased, space -> '_'
+	'LABELS': {0:'Negative', 1:'Neutral', 2:'Positive'}
+}
+
+TEST_FILE3 = {
+	'FILE_NAME': 'sentiment_analysis.csv',
+	'ENCODING': "UTF-8",
+	'SOURCE_TEXT_COLUMN': "text",
+	'SOURCE_TARGET': "sentiment",  # labels column, should be lowercased, space -> '_'
+	'LABELS': {0:'negative', 1:'neutral', 2:'positive'}
+}
 
 # preprocessing
 USE_ENCODER = False

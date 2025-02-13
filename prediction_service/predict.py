@@ -101,7 +101,7 @@ class Predictor():
         print(f'\nPredicting using model {self.classifier}')
 
         selected_columns = [TEXT_COLUMN, TARGET] 
-        test_data = preprocess_data(df, selected_columns)
+        test_data = preprocess_data(df, selected_columns, verbose=verbose)
 
         cols = test_data.columns.to_list()
         X_test = pd.DataFrame(test_data, columns=cols)
@@ -264,7 +264,7 @@ def predict_df(df, classifier=DEFAULT_CLASSIFIER, model_dir=MODEL_DIR, verbose=D
     model_name = f'{classifier}.pkl'
     try:
         model = pickle.load(open(f'{MODEL_DIR}{model_name}', 'rb'))
-        if DEBUG:
+        if verbose and DEBUG:
             print(' model.get_params:', model.get_params())
         count_vect = enc_load(MODEL_DIR+'CountVectorizer.pkl')
         transformer = enc_load(MODEL_DIR+'TfidfTransformer.pkl')
@@ -282,7 +282,8 @@ def predict_df(df, classifier=DEFAULT_CLASSIFIER, model_dir=MODEL_DIR, verbose=D
             _pred.append(model.predict(x_test_tfidf))
         # y_pred = pd.DataFrame(_pred, columns=[TARGET])
         y_pred = _pred
-        print(y_pred)
+        if verbose and DEBUG:
+            print(y_pred)
         # print('\n\nPrediction debug:', X_test.shape, X_train_counts.shape, X_train_tfidf.shape, y_pred.shape)
         if verbose:
             print(f"\nPrediction:\ny_pred: {list(y_pred)[:10]}")
